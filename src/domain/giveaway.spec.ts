@@ -1,11 +1,11 @@
 import { Participant } from './participant';
-import { GiveAway } from './giveaway';
+import { Giveaway } from './giveaway';
 
 describe('Giveaway', () => {
   test('should add participant with min score to giveaway', () => {
     
     const participant = new Participant('otavio', 'otavio@mail.com', 10)
-    const giveAway = new GiveAway(8)
+    const giveAway = new Giveaway(8)
     giveAway.addParticipant(participant)
   
     expect(giveAway.participants).toContain(participant)
@@ -15,7 +15,7 @@ describe('Giveaway', () => {
   test('should not add participant with score less than the min score to giveaway', () =>{
 
     const participant = new Participant('victor', 'victor@mail.com', 7)
-    const giveaway = new GiveAway(8)
+    const giveaway = new Giveaway(8)
 
     giveaway.addParticipant(participant)
     expect(giveaway.participants).not.toContain(participant)
@@ -28,7 +28,7 @@ describe('Giveaway', () => {
     const participant2 = new Participant('hugo', 'hugo@mail.com', 9)
     const participant3 = new Participant('victor', 'victor@mail.com', 8)
 
-    const giveaway = new GiveAway(8)
+    const giveaway = new Giveaway(8)
 
     giveaway.addParticipant(participant1)
     giveaway.addParticipant(participant2)
