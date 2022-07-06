@@ -36,7 +36,6 @@ describe('Giveaway', () => {
 
     const drawn = giveaway.draw()
     expect(drawn === participant1 || drawn === participant2 || drawn === participant3).toBeTruthy()
-    console.log(drawn)
   })
 
 

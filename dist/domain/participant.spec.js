@@ -9,3 +9,4 @@ describe('Participant', () => {
         expect(participant.score).toBe(10);
     });
 });
+//# sourceMappingURL=participant.spec.js.map

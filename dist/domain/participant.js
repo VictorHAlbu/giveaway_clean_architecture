@@ -9,3 +9,4 @@ class Participant {
     }
 }
 exports.Participant = Participant;
+//# sourceMappingURL=participant.js.map
