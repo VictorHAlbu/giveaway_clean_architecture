@@ -3,6 +3,7 @@ import { AddParticipantToGiveaway } from './addparticipanttogiveaway';
 import { Participant } from '../domain/participant';
 import { ParticipantRepository } from './port/participantrepository';
 import { InMemoryParticipantRepository } from '../adapter/repository/inmemoryparticipantrepository'
+import { Giveaway } from '../domain/giveaway';
 
 describe('Add participant to giveaway', () => {
   test('should add a participant with adequate score', () => {
@@ -23,6 +24,20 @@ describe('Add participant to giveaway', () => {
     addParticipantToGiveaway.addParticipatsToGiveaway()
 
     expect(addParticipantToGiveaway.giveaway.participants).toContain(participant1)
+  })
+
+  test('should not add a participant with inadequate score', () => {
+    const giveaway = new CreateGiveaway().createGiveaway(8)
+
+    const participant3 = new Participant('junior', 'junior@mail.com', 7)
+    var participantList: Participant[]=[]
+
+    participantList.push(participant3)
+    const participantRepo: ParticipantRepository = new InMemoryParticipantRepository(participantList)
+    const addParticipantToGiveaway = new AddParticipantToGiveaway(giveaway, participantRepo)
+
+    addParticipantToGiveaway.addParticipatsToGiveaway()
+    expect(addParticipantToGiveaway.giveaway.participants).not.toContain(participant3)
   })
 
 })
