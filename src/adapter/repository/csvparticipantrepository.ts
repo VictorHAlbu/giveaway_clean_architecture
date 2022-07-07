@@ -21,7 +21,13 @@ export class CsvParticipantRepository implements ParticipantRepository {
 
   formartFromCsv(name: string, email: string, scorestr: string){
     const score = parseInt(scorestr.substring(0, scorestr.indexOf('/')).trim(), 10)
-    const participant: Participant = new Participant(name, email, score)
+    const participant: Participant = new Participant(CsvParticipantRepository.toTitleCase(name), email, score)
     return participant
+  }
+
+  static toTitleCase (str: string): string {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    })
   }
 }
