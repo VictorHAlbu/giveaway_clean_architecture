@@ -12,7 +12,7 @@ export class AddParticipantToGiveaway{
     this.participantRepo = participantRepo
   }
 
-  addParticipatsToGiveaway (): void{
+  addParticipantsToGiveaway (): void{
     const participantList: Participant[] = this.participantRepo.findAllParticipants()
     participantList.forEach(element => {
       this.giveaway.addParticipant(element)

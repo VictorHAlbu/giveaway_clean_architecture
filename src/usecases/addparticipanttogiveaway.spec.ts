@@ -21,7 +21,7 @@ describe('Add participant to giveaway', () => {
 
     const participantRepo: ParticipantRepository = new InMemoryParticipantRepository(participantList)
     const addParticipantToGiveaway = new AddParticipantToGiveaway(giveaway, participantRepo)
-    addParticipantToGiveaway.addParticipatsToGiveaway()
+    addParticipantToGiveaway.addParticipantsToGiveaway()
 
     expect(addParticipantToGiveaway.giveaway.participants).toContain(participant1)
   })
@@ -36,7 +36,7 @@ describe('Add participant to giveaway', () => {
     const participantRepo: ParticipantRepository = new InMemoryParticipantRepository(participantList)
     const addParticipantToGiveaway = new AddParticipantToGiveaway(giveaway, participantRepo)
 
-    addParticipantToGiveaway.addParticipatsToGiveaway()
+    addParticipantToGiveaway.addParticipantsToGiveaway()
     expect(addParticipantToGiveaway.giveaway.participants).not.toContain(participant3)
   })
 
