@@ -10,8 +10,17 @@ export class Main {
     const addParticipants = new AddParticipantToGiveaway(giveaway, csvRepo)
     addParticipants.addParticipantsToGiveaway()
     const drawWinners = new DrawWinnersFromGiveaway(giveaway)
-    const winners = drawWinners.drawWinners(2)
-    console.log(winners)
+    const winners = drawWinners.drawWinners(10)
+    console.table(winners)
+    var winnersNames = ''
+    winners.forEach((element) => {
+      winnersNames += element.name + '\n'
+    })
+    const fs = require('fs')
+    var util = require('util')
+    fs.writeFile('winners.txt', util.inspect(winners), (err: Error) => {
+      if (err != null) throw err
+    })
   }
 
 }

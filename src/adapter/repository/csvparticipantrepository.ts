@@ -1,28 +1,26 @@
-import { Participant } from '../../domain/participant';
+import { Participant } from '../../domain/participant'
 import { ParticipantRepository } from '../../usecases/port/participantrepository';
 
 export class CsvParticipantRepository implements ParticipantRepository {
+  lp: Participant[] = []
 
-  listParticipant: Participant[] = []
-
-  constructor(filename: string){
-    
+  constructor (filename: string) {
     var loader = require('csv-load-sync')
     var csv = loader(filename)
 
-    csv.forEach((element: { Nome: string; email: string; score: string; }) => {
-      this.listParticipant.push(this.formartFromCsv(element.Nome, element.email, element.score))
+    csv.forEach(element => {
+      this.lp.push(this.formatFromCsv(element.Nome, element.email, element.score))
     })
   }
 
   findAllParticipants (): Participant[] {
-    return this.listParticipant
+    return this.lp
   }
 
-  formartFromCsv(name: string, email: string, scorestr: string){
+  formatFromCsv (name: string, email: string, scorestr: string): Participant {
     const score = parseInt(scorestr.substring(0, scorestr.indexOf('/')).trim(), 10)
-    const participant: Participant = new Participant(CsvParticipantRepository.toTitleCase(name), email, score)
-    return participant
+    const p: Participant = new Participant(CsvParticipantRepository.toTitleCase(name), email, score)
+    return p
   }
 
   static toTitleCase (str: string): string {
