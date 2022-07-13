@@ -1,0 +1,10 @@
+[
+  Participant { name: 'hugo', email: 'hugo@mail.com', score: 9 },
+  Participant { name: 'junior', email: 'junior@mail.com', score: 8 },
+  Participant {
+    name: 'victorhugo',
+    email: 'victorhugo@mail.com',
+    score: 10
+  },
+  Participant { name: 'otavio', email: 'otavio@mail.com', score: 10 }
+]

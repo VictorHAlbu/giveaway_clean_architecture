@@ -8,7 +8,7 @@ export class CsvParticipantRepository implements ParticipantRepository {
     var loader = require('csv-load-sync')
     var csv = loader(filename)
 
-    csv.forEach(element => {
+    csv.forEach((element: { Nome: string; email: string; score: string; }) => {
       this.lp.push(this.formatFromCsv(element.Nome, element.email, element.score))
     })
   }
